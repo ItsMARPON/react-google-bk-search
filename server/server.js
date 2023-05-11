@@ -1,8 +1,7 @@
 const express = require("express");
-const path = require("path");
 // Import the ApolloServer class
 const { ApolloServer } = require("apollo-server-express");
-
+const path = require("path");
 // Import authmiddleware to verify token
 const { authMiddleware } = require("./utils/auth");
 
@@ -11,8 +10,9 @@ const { typeDefs, resolvers } = require("./schemas");
 
 const db = require("./config/connection");
 
-const app = express();
+
 const PORT = process.env.PORT || 3001;
+const app = express();
 // use ApolloServer
 const server = new ApolloServer({
   typeDefs,
@@ -41,10 +41,9 @@ const startApolloServer = async (typeDefs, resolvers) => {
     app.listen(PORT, () => {
       console.log(`🌍 Now listening on localhost:${PORT}`);
       console.log(
-        `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
-      );
-    });
-  });
+        `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    })
+  })
 };
 
 // Call the async function to start the server
