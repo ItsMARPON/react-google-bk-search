@@ -49,6 +49,5 @@ export const REMOVE_BOOK = gql`
       username
       savedBooks
       }
-    }
   }
 `;
