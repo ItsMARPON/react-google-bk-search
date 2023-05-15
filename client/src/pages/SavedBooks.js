@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Container,
   Card,
@@ -52,7 +52,7 @@ const SavedBooks = () => {
     try {
       const {data} = await removeBook(bookId, token);
 
-      const updatedUser = await queryMe(token);
+      const updatedUser = await data(token);
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
