@@ -1,5 +1,5 @@
-const { User, bookSchema } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
+const { User, bookSchema } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -7,8 +7,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         const foundUser = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+          "-__v -password");
         return foundUser;
       }
       throw new AuthenticationError("You are not logged in!");
@@ -16,10 +15,10 @@ const resolvers = {
   },
   Mutation: {
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email: email });
+      const user = await User.findOne({ email});
 
       if (!user) {
-        throw new AuthenticationError("Can't find this user");
+        throw new AuthenticationError("No User Found with this Email Address");
       }
 
       const correctPw = await user.isCorrectPassword(password);
@@ -38,7 +37,7 @@ const resolvers = {
     saveBook: async (parent, args, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
-          { _id: user._id },
+          { _id: context.user._id },
           { $addToSet: { savedBooks: args.bookInput } },
           { new: true, runValidators: true }
         );
@@ -50,13 +49,10 @@ const resolvers = {
     removeBook: async (parent, args, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
-          { _id: user._id },
+          { _id: context.user._id },
           { $pull: { savedBooks: { bookId: args.bookId } } },
           { new: true }
         );
-        if (!updatedUser) {
-          throw new Error("Couldn't find user with this id!");
-        }
         return updatedUser;
       }
       throw new AuthenticationError("You are not logged in!");
