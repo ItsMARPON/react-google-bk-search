@@ -39,7 +39,7 @@ Install nodemon <br />
 ![Screenshot of Deployed URL](./client/src/assets/images/Googlebksearch3small.png)<br />
 ![Screenshot of Deployed URL](./client/src/assets/images/Googlebksearch4small.png)<br />
 
-Deployed Heroku (https://)
+Deployed Heroku App (https://google-books-app.herokuapp.com/)
 
 In the command line of GitBash or Powershell, type the following to begin the React App:<br />
 npm run develop
