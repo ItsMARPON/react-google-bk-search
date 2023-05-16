@@ -33,7 +33,13 @@ Install nodemon <br />
 
 
 ## Usage<a name="usage"></a>
-![Screenshot of Portfolio Deployed URL](./src/assets/images/portfolio-app1.png)<br />
+![Screenshot of Deployed URL](./client/src/assets/images/Googlebksearchsmall.png)<br />
+![Screenshot of Deployed URL](./client/src/assets/images/Googlebksearch1small.png)<br />
+![Screenshot of Deployed URL](./client/src/assets/images/Googlebksearch2small.png)<br />
+![Screenshot of Deployed URL](./client/src/assets/images/Googlebksearch3small.png)<br />
+![Screenshot of Deployed URL](./client/src/assets/images/Googlebksearch4small.png)<br />
+
+Deployed Heroku (https://)
 
 In the command line of GitBash or Powershell, type the following to begin the React App:<br />
 npm run develop

@@ -32,7 +32,7 @@ const SavedBooks = () => {
           return false;
         }
 
-        const user = await data(token);
+        // await data(token);
       } catch (err) {
         console.error(err);
       }
@@ -50,9 +50,8 @@ const SavedBooks = () => {
     }
 
     try {
-      const {data} = await removeBook(bookId, token);
+      await removeBook({variables: {bookId, token}});
 
-      const updatedUser = await data(token);
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
